@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" Title="GitHub Users and Repositories" x:Class="GitHub.Views.MainPage">
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Entry Text="{Binding Term}" Placeholder="Username">
+            </Entry>
+            <Button Text="Search" Command="{Binding BuscarRespositorios}" />
+            <ListView IsRefreshing="{Binding IsRunning}" ItemsSource="{Binding Respositories}" SelectedItem="{Binding SelectedItem}" HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Spacing="10" Margin="10">
+                                <Image Source="{Binding Owner.AvatarUrl}" WidthRequest="50" />
+                                <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Label Text="{Binding FullName}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center" />
+                                    <Label Text="{Binding Url}" FontSize="Micro" />
+                                    <Label Text="{Binding Language}" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" FontSize="Micro" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
